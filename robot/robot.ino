@@ -54,45 +54,31 @@ void loop()
   Serial.println(rightDistance);
   delay(50);
 
-  if (leftDistance > 20)
-  {
+  if (leftDistance > 20){
     Stop();
     delay(1000);
     left();
     delay(400);
     forward();
-  }
-  else if (frontDistance > 20)
-  {
-    if (isBetween(leftDistance, 0, 10))
-    {
+  } else if (frontDistance > 20){
+    if (isBetween(leftDistance, 0, 10)){
       right();
       delay(30);
       forward();
-    }
-    else if (isBetween(rightDistance, 0, 10))
-    {
+    } else if (isBetween(rightDistance, 0, 10)){
       left();
       delay(30);
       forward();
-    }
-    else
-    {
+    } else {
       forward();
     }
-  }
-
-  else if (rightDistance > 20)
-  {
+  } else if (rightDistance > 20) {
     Stop();
     delay(1000);
     right();
     delay(400);
     forward();
-  }
-
-  else
-  {
+  } else {
     Stop();
     delay(1000);
     right();
