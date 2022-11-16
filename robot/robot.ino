@@ -20,8 +20,7 @@ int leftEcho = A3;
 int rightTrigger = A4;
 int rightEcho = A5;
 
-void setup()
-{
+void setup(){
   setupForwardMotor();
 
   setupBackwardMotor();
@@ -29,8 +28,7 @@ void setup()
   setupTriggers();
 }
 
-void loop()
-{
+void loop(){
   Serial.begin(9600);
   long frontDistance, leftDistance, rightDistance;
 
@@ -91,24 +89,21 @@ void loop()
 ------------------------------------------------ Setup ------------------------------------------------
 */
 
-void setupForwardMotor()
-{
+void setupForwardMotor(){
   pinMode(motorForwardLeft, OUTPUT);
   pinMode(motorForwardRight, OUTPUT);
   pinMode(motorEnableForward, OUTPUT);
   analogWrite(motorEnableForward, 80);
 }
 
-void setupBackwardMotor()
-{
+void setupBackwardMotor(){
   pinMode(motorBackwardLeft, OUTPUT);
   pinMode(motorBackwardRight, OUTPUT);
   pinMode(motorEnableBackward, OUTPUT);
   analogWrite(motorEnableBackward, 88);
 }
 
-void setupTriggers()
-{
+void setupTriggers(){
   pinMode(frontTrigger, OUTPUT);
   pinMode(frontEcho, INPUT);
 
@@ -123,8 +118,7 @@ void setupTriggers()
 ------------------------------------------------ Movimiento ------------------------------------------------
 */
 
-void forward()
-{
+void forward(){
   digitalWrite(motorForwardLeft, 1);
   digitalWrite(motorBackwardLeft, 0);
   digitalWrite(motorForwardRight, 1);
@@ -132,8 +126,7 @@ void forward()
   delay(1000);
 }
 
-void right()
-{
+void right(){
   digitalWrite(motorForwardLeft, 1);
   digitalWrite(motorBackwardLeft, 0);
   digitalWrite(motorForwardRight, 0);
@@ -141,8 +134,7 @@ void right()
   delay(10);
 }
 
-void left()
-{
+void left(){
   digitalWrite(motorForwardLeft, 0);
   digitalWrite(motorBackwardLeft, 1);
   digitalWrite(motorForwardRight, 1);
@@ -150,8 +142,7 @@ void left()
   delay(10);
 }
 
-void Stop()
-{
+void Stop(){
   digitalWrite(motorForwardLeft, 0);
   digitalWrite(motorBackwardLeft, 0);
   digitalWrite(motorForwardRight, 0);
@@ -163,8 +154,7 @@ void Stop()
 ------------------------------------------------ Distancia ------------------------------------------------
 */
 
-long getDistance(int trigger, int echo)
-{
+long getDistance(int trigger, int echo){
   digitalWrite(trigger, LOW);
   delayMicroseconds(2);
   digitalWrite(trigger, HIGH);
@@ -179,7 +169,6 @@ long getDistance(int trigger, int echo)
 --------------------------------------------- Funciones útiles ---------------------------------------------
 */
 
-int isBetween(long value, long min, long max)
-{
+int isBetween(long value, long min, long max){
   return value >= min && value <= max;
 }
